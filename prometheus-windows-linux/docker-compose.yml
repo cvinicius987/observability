@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    volumes:
+      - prometheus-windows-linux-data:/prometheus
+      - ./config:/etc/prometheus
+    ports:
+      - 9090:9090
+    networks:
+      - prometheus-windows-linux
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    volumes:
+      -  grafana-windows-linux-data:/var/lib/grafana
+      - ./config/grafana/:/etc/grafana/provisioning/
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+    networks:
+      - prometheus-windows-linux
+
+volumes:
+  prometheus-windows-linux-data:
+  grafana-windows-linux-data:
+
+networks: 
+  prometheus-windows-linux:

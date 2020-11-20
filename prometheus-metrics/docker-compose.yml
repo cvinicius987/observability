@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    volumes:
+      - prometheus-metrics-data:/prometheus
+      - ./config:/etc/prometheus
+    ports:
+      - 9090:9090
+
+volumes:
+  prometheus-metrics-data:
