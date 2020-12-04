@@ -6,29 +6,29 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     volumes:
-      - prometheus-windows-linux-data:/prometheus
+      - prometheus-windows-data:/prometheus
       - ./config:/etc/prometheus
     ports:
       - 9090:9090
     networks:
-      - prometheus-windows-linux
+      - prometheus-windows
 
   grafana:
     container_name: grafana
     image: grafana/grafana
     volumes:
-      -  grafana-windows-linux-data:/var/lib/grafana
+      -  grafana-windows-data:/var/lib/grafana
       - ./config/grafana/:/etc/grafana/provisioning/
     ports:
       - 3000:3000
     depends_on:
       - prometheus
     networks:
-      - prometheus-windows-linux
+      - prometheus-windows
 
 volumes:
-  prometheus-windows-linux-data:
-  grafana-windows-linux-data:
+  prometheus-windows-data:
+  grafana-windows-data:
 
 networks: 
-  prometheus-windows-linux:
+  prometheus-windows:
