@@ -6,6 +6,8 @@ Para coletar as métricas do sistema operacional, precisamos executar uma ferram
 
 [Windows Exporter](https://github.com/prometheus-community/windows_exporter)
 
+Após o download do release, basta executar e o endereço de coleta irá ester disponível para configuração no Prometheus.
+
 ### Execução
 
 Para executar a aplicação será utilizado docker com docker-compose.
