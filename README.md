@@ -6,7 +6,7 @@ Estudos com diferentes ferramentas para realizar as principais tarefas ligadas a
 
 * Métricas;
 * Logs;
-* Trancing;
+* Tracing;
 * Alertas;
 * Monitoramento.
 
