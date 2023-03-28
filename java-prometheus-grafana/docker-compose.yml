@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    volumes:
+      - prometheus-data:/prometheus
+    ports:
+      - 9090:9090
+    networks:
+      - java-prometheus-grafana
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+    networks:
+       - java-prometheus-grafana
+
+volumes:
+  prometheus-data:
+  grafana-data:
+
+networks: 
+  java-prometheus-grafana:
